@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Attendance System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- QR Code generator -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <!-- QR Code scanner -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <!-- Add html2canvas CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<h1>QR Code Attendance System</h1>
+<div class="container">
+    <div class="section">
+        <h2>Add Student & Generate QR Code</h2>
+        <input type="text" id="name" placeholder="Enter Name" required>
+        <input type="text" id="roll" placeholder="Enter Roll Number" required>
+        <input type="text" id="department" placeholder="Enter Department" required>
+        <button id="generateBtn">Generate QR Code</button>
+    </div>
+
+    <div id="qrDisplayContainer" class="section" style="display: none; text-align: center; min-width: 220px;">
+        <h2>Generated QR Code</h2>
+        <div id="userInfo" style="margin-bottom: 10px;"></div>
+        <div id="qrcode"></div>
+        <button id="downloadQrBtn" style="margin-top: 10px;">Download QR Code</button>
+    </div>
+
+    <div class="section">
+        <h2>Mark Attendance (Scan QR)</h2>
+        <div id="reader"></div>
+        <div style="margin-top:8px; display:flex; gap:8px; align-items:center;">
+            <label for="cameraSelect">Camera:</label>
+            <select id="cameraSelect" style="min-width:200px;"><option value="">Loading cameras...</option></select>
+            <button id="startScanBtn" disabled>Start Scan</button>
+            <button id="stopScanBtn" disabled>Stop Scan</button>
+        </div>
+        <div id="scanStatus" style="margin-top:10px; color:#155724; background:#d4edda; padding:6px; border-radius:4px; display:none;"></div>
+    </div>
+</div>
+
+<div class="attendance-section">
+    <h2>Attendance Table</h2>
+    <table id="attendanceTable">
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Attendance Count</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
